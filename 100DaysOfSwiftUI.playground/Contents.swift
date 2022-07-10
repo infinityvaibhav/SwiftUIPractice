@@ -1,30 +1,13 @@
-struct Game {
-    var score = 0 {
-        didSet {
-            print("Score is now \(score)")
-        }
+struct Player {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
     }
 }
 
-var game = Game()
-game.score += 10
-game.score -= 3
-game.score += 1
-
-struct App {
-    var contacts = [String]() {
-        willSet {
-            print("Current value is \(contacts)")
-            print("New value will be \(newValue)")
-        }
-        didSet {
-            print("There are now \(contacts.count) contacts")
-            print("Old value was \(oldValue)")
-        }
-    }
-}
-
-var app = App()
-app.contacts.append("Adrian E")
-app.contacts.append("Allen W")
-app.contacts.append("Ish S")
+//member wise initializer
+let player = Player(name: "Megan R")
+print(player.number)
