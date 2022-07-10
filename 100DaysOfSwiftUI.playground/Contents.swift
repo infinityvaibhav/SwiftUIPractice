@@ -1,13 +1,27 @@
-struct Player {
-    let name: String
-    let number: Int
+struct BankAccount {
+    private(set) var funds = 0
     
-    init(name: String) {
-        self.name = name
-        number = Int.random(in: 1...99)
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds > amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
     }
 }
 
-//member wise initializer
-let player = Player(name: "Megan R")
-print(player.number)
+var account = BankAccount()
+account.deposit(amount: 100)
+
+let success = account.withdraw(amount: 200)
+
+if success {
+    print("Withdrew money successfully")
+} else {
+    print("Failed to get money")
+}
