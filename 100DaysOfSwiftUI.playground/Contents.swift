@@ -20,19 +20,21 @@ wings.printSummary()
 
 struct Employee {
     let name: String
-    var vacationRemaining: Int
+    var vacationAllocated = 14
+    var vacationTaken = 0
     
-    mutating func takeVacation(days: Int) {
-        if vacationRemaining > days {
-            vacationRemaining -= days
-            print("I am going on vacation")
-            print("Days remaining: \(vacationRemaining)")
-        } else {
-            print("Oops! there aren't enough days remaining")
+    var vacationRemaining: Int {
+        get {
+            vacationAllocated - vacationTaken
+        }
+        
+        set {
+            vacationAllocated = vacationTaken + newValue
         }
     }
 }
 
-var archer = Employee(name: "Sterling Archer", vacationRemaining: 14)
-archer.takeVacation(days: 5)
-print(archer.vacationRemaining)
+var archer = Employee(name: "Sterling Archer", vacationAllocated: 14)
+archer.vacationTaken += 4
+archer.vacationRemaining = 5
+print(archer.vacationAllocated)
