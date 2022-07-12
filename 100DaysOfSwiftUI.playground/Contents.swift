@@ -1,32 +1,18 @@
-
-class Employee {
-    let hours: Int
+class Vehicle {
+    let isElectric: Bool
     
-    init(hours: Int) {
-        self.hours = hours
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
     }
+}
+
+class Car: Vehicle {
+    var isConvertable: Bool
     
-    func printSummary() {
-        print("I work \(hours) hour a day")
+    init(isElectric: Bool, isConvertable: Bool) {
+        self.isConvertable = isConvertable
+        super.init(isElectric: isElectric)
     }
 }
 
-class Developer: Employee {
-    func work() {
-        print("I am writing code for \(hours) hours")
-    }
-}
-
-class Manager: Employee {
-    func work() {
-        print("I am going to meeting for \(hours) hours")
-    }
-}
-
-let robert = Developer(hours: 8)
-let joseph = Manager(hours: 10)
-robert.work()
-joseph.work()
-
-let novall = Developer(hours: 8)
-novall.printSummary()
+let teslaX = Car(isElectric: true, isConvertable: false)
