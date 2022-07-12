@@ -1,27 +1,30 @@
-struct BankAccount {
-    private(set) var funds = 0
+
+struct School {
+    static var studentCout = 0
     
-    mutating func deposit(amount: Int) {
-        funds += amount
-    }
-    
-    mutating func withdraw(amount: Int) -> Bool {
-        if funds > amount {
-            funds -= amount
-            return true
-        } else {
-            return false
-        }
+    static func add(student: String)  {
+        print("\(student) joined the school")
+        studentCout += 1
     }
 }
 
-var account = BankAccount()
-account.deposit(amount: 100)
 
-let success = account.withdraw(amount: 200)
+School.add(student: "Taylor Swift")
+print(School.studentCout)
 
-if success {
-    print("Withdrew money successfully")
-} else {
-    print("Failed to get money")
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let saveFileName = "setting.json"
+    static let homeURL = "https://hackingwithswift.com"
 }
+
+AppData.version
+
+struct Employee {
+    let username: String
+    let password: String
+    
+    static let example = Employee(username: "infinityvaibhav", password: "abc@123")
+}
+
+Employee.example
